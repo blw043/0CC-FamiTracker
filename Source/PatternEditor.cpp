@@ -383,7 +383,12 @@ void CPatternEditor::DrawScreen(CDC &DC, CFamiTrackerView *pView)
 	//
 
 //#define BENCHMARK
-
+	
+	// Make sure CreateBackground is called first
+	if (!m_pPatternDC || !m_pHeaderDC || !m_pRegisterDC) {
+		CreateBackground(DC);
+	}
+	
 	ASSERT(m_pPatternDC != NULL);
 	ASSERT(m_pHeaderDC != NULL);
 	ASSERT(m_pRegisterDC != NULL);		// // //
